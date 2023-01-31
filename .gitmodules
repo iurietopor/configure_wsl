@@ -1,0 +1,9 @@
+[submodule "git-configuration"]
+	path = git-configuration
+	url = git@github.com:iurietopor/git-configuration.git
+[submodule "vim_configuration"]
+	path = vim_configuration
+	url = git@github.com:iurietopor/vim_configuration.git
+[submodule "terraform_install"]
+	path = terraform_install
+	url = git@github.com:iurietopor/terraform_install.git
