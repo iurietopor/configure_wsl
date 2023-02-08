@@ -2,3 +2,5 @@
 
 # folders/directories
 */.git/*
+.vscode/*
+
