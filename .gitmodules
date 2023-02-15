@@ -7,3 +7,6 @@
 [submodule "terraform_install"]
 	path = terraform_install
 	url = git@github.com:iurietopor/terraform_install.git
+[submodule "az_cli_install"]
+	path = az_cli_install
+	url = git@github.com:iurietopor/az_cli_install.git
