@@ -21,6 +21,11 @@
           state: link
           mode: '0644'
 
+      - name: Load .profile 
+        shell: source {{ ansible_env.HOME }}/.profile
+        args:
+          executable: /bin/bash
+
       - block:
           - name: remove original file
             file:
@@ -33,10 +38,12 @@
               dest: "{{ bh_profile }}"
               state: link
               mode: '0644'
-        when: term_promts_lines == 2
 
-      - name: Load .profile 
-        shell: source {{ bh_profile }}
+          - name: Load .profile 
+            shell: source {{ ansible_env.HOME }}/.profile
+            args:
+              executable: /bin/bash
+        when: term_promts_lines == 2
 
 # ```
               
