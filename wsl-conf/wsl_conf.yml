@@ -16,7 +16,7 @@
 
       - name: Creat symbolic link
         file:
-          src: "{{ ansible_env.PWD }}/."
+          src: "{{ ansible_env.PWD }}/.bashrc"
           dest: "{{ bashrc }}"
           state: link
           mode: '0644'
