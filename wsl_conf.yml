@@ -1,0 +1,41 @@
+---
+  - name: Configure wsl at once
+    hosts: localhost
+    gather_facts: yes
+    become: no
+    vars:
+      term_promts_lines: 1 #how many lines
+      bashrc: "{{ ansible_env.HOME }}/.bashrc"
+      bh_profile: "{{ ansible_env.HOME }}/.profile"
+
+    tasks: 
+      - name: remove original files
+        file:
+          path: "{{ bashrc }}"
+          state: absent
+
+      - name: Creat symbolic link
+        file:
+          src: "{{ ansible_env.PWD }}/."
+          dest:
+          state: link
+          mode: '0644'
+
+      - block:
+          - name: remove original file
+            file:
+              path: "{{ bh_profile }}"
+              state: absent
+
+          - name: Create symbolic link
+            file:
+              src: "{{ ansible_env.PWD }}/.bh_profile"
+              dest: "{{ bh_profile }}"
+              state: link
+              mode: '0644'
+        
+        when: term_promts_lines == 2
+
+        
+# ```
+              
