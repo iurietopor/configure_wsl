@@ -4,7 +4,7 @@
     gather_facts: yes
     become: no
     vars:
-      term_promts_lines: 1 #how many lines
+      term_promts_lines: "{{ lines_count }}"  #how many lines. use 2 for like kali
       bashrc: "{{ ansible_env.HOME }}/.bashrc"
       bh_profile: "{{ ansible_env.HOME }}/.profile"
 
@@ -33,9 +33,10 @@
               dest: "{{ bh_profile }}"
               state: link
               mode: '0644'
-        
         when: term_promts_lines == 2
 
-        
+      - name: Load .profile 
+        shell: source {{ bh_profile }}
+
 # ```
               
